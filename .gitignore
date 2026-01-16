@@ -1,5 +1,4 @@
 .env
-update_assistant.sh
 __pycache__/
 *.pyc
 .DS_Store

@@ -78,6 +78,7 @@ Entenda rapidamente o que o lead precisa:
 ### 3. Qualificação (opcional)
 
 Antes de enviar o link, se houver abertura natural, faça UMA pergunta de qualificação:
+
 - "[Pergunta de qualificação 1]"
 - "[Pergunta de qualificação 2 - captura de email opcional]"
 

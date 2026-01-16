@@ -56,31 +56,35 @@ The `Prompt.md` file should follow this structure:
 
 ```markdown
 ## IDENTIDADE
+
 [Maps to: assistantRole]
 Description of who the assistant is and its role.
 
 ## PERSONALIDADE E TOM DE VOZ
+
 [Maps to: assistantPersonality]
 How the assistant should communicate.
 
 ## SOBRE O PRODUTO
+
 [Maps to: organizationInfo array]
 Product information, pricing, benefits, etc.
 
 ## FLUXO DE ATENDIMENTO
+
 [Maps to: promptPostlude - this and all following sections]
 The conversation flow, objection handling, follow-ups, etc.
 ```
 
 ### Field Mapping
 
-| Prompt.md Section | API Field |
-|---|---|
-| `## IDENTIDADE` | `assistantRole` |
-| `## PERSONALIDADE E TOM DE VOZ` | `assistantPersonality` |
-| `## SOBRE O PRODUTO` | `organizationInfo[]` |
-| `## FLUXO DE ATENDIMENTO` onwards | `promptPostlude` |
-| *(empty by default)* | `promptPrelude` |
+| Prompt.md Section                 | API Field              |
+| --------------------------------- | ---------------------- |
+| `## IDENTIDADE`                   | `assistantRole`        |
+| `## PERSONALIDADE E TOM DE VOZ`   | `assistantPersonality` |
+| `## SOBRE O PRODUTO`              | `organizationInfo[]`   |
+| `## FLUXO DE ATENDIMENTO` onwards | `promptPostlude`       |
+| _(empty by default)_              | `promptPrelude`        |
 
 ### Fixed Values
 
@@ -93,11 +97,11 @@ These values are configured in `build_assistant.py`:
 
 ## Environment Variables
 
-| Variable | Description |
-|---|---|
-| `MERMAID_TOKEN` | Your MermAId API token (starts with `ak_`) |
-| `MERMAID_ASSISTANT_ID` | The UUID of your assistant |
-| `MERMAID_ACCOUNT_ID` | Your account UUID |
+| Variable               | Description                                |
+| ---------------------- | ------------------------------------------ |
+| `MERMAID_TOKEN`        | Your MermAId API token (starts with `ak_`) |
+| `MERMAID_ASSISTANT_ID` | The UUID of your assistant                 |
+| `MERMAID_ACCOUNT_ID`   | Your account UUID                          |
 
 ## API Reference
 
