@@ -26,12 +26,15 @@ Guidelines for AI agents working on this codebase.
 
 ### Global `.env.local` (root level)
 
-| Variable               | Service        | Purpose                             |
-| ---------------------- | -------------- | ----------------------------------- |
-| `WEBHOOK_SECRET`       | Webhook Auth   | Validates incoming webhook requests |
-| `MERMAID_TOKEN`        | AI Provider    | API token for assistant operations  |
-| `MERMAID_ASSISTANT_ID` | AI Provider    | Default assistant identifier        |
-| `MERMAID_ACCOUNT_ID`   | Account System | Primary account identifier          |
+| Variable                                | Service        | Purpose                              |
+| --------------------------------------- | -------------- | ------------------------------------ |
+| `WEBHOOK_SECRET`                        | Webhook Auth   | Validates incoming webhook requests  |
+| `MERMAID_TOKEN`                         | AI Provider    | API token for assistant operations   |
+| `MERMAID_ASSISTANT_ID`                  | AI Provider    | Default assistant identifier         |
+| `MERMAID_ACCOUNT_ID`                    | Account System | Primary account identifier           |
+| `ANTHROPIC_API_KEY`                     | Anthropic      | Claude API key for AI operations     |
+| `ANTHROPIC_ADMIN_API_KEY`               | Anthropic      | Admin API for usage/billing data     |
+| `GOOGLE_SERVICE_ACCOUNT_CREDENTIALS_JSON` | Google       | Service account for Drive/Sheets     |
 
 ### Account-Level Configs (`lib/accounts/[name-id]/config.ts`)
 
@@ -42,9 +45,8 @@ Each account has its own protected configuration:
 export const config = {
   accountId: "acme-corp-123",
   name: "Acme Corporation",
-  Anthropic: {
-    apiKey: process.env.ACME_CORP_Anthropic_KEY!,
-    organization: process.env.ACME_CORP_Anthropic_ORG,
+  anthropic: {
+    apiKeyEnvVar: "ACME_CORP_ANTHROPIC_KEY", // Reference, not value
   },
   assistants: ["asst_abc123", "asst_def456"],
 };
