@@ -4,6 +4,31 @@ Guidelines for AI agents working on this codebase.
 
 > ⚠️ **STRICT COMPLIANCE REQUIRED**: These are not suggestions. Every rule must be followed exactly. No exceptions, no shortcuts, no "it's just a small helper function." If a rule exists, enforce it.
 
+---
+
+## ⛔ CRITICAL: Node.js & npm Rules
+
+**NEVER access `node_modules/` directly.** Do not:
+
+- Read files from `node_modules/`
+- Try to execute binaries from `node_modules/.bin/`
+- Inspect `node_modules/` contents
+- Reference paths inside `node_modules/`
+
+**To build or run the project:**
+
+```bash
+# If having issues, always start fresh:
+rm -rf node_modules && npm install
+
+# Then run commands via npm scripts:
+npm run build
+npm run dev
+npm run typecheck
+```
+
+**ALWAYS use npm scripts**, never direct binary execution.
+
 ## Quick Reference
 
 | Need to...                   | Look at...                                    |
@@ -26,15 +51,15 @@ Guidelines for AI agents working on this codebase.
 
 ### Global `.env.local` (root level)
 
-| Variable                                | Service        | Purpose                              |
-| --------------------------------------- | -------------- | ------------------------------------ |
-| `WEBHOOK_SECRET`                        | Webhook Auth   | Validates incoming webhook requests  |
-| `MERMAID_TOKEN`                         | AI Provider    | API token for assistant operations   |
-| `MERMAID_ASSISTANT_ID`                  | AI Provider    | Default assistant identifier         |
-| `MERMAID_ACCOUNT_ID`                    | Account System | Primary account identifier           |
-| `ANTHROPIC_API_KEY`                     | Anthropic      | Claude API key for AI operations     |
-| `ANTHROPIC_ADMIN_API_KEY`               | Anthropic      | Admin API for usage/billing data     |
-| `GOOGLE_SERVICE_ACCOUNT_CREDENTIALS_JSON` | Google       | Service account for Drive/Sheets     |
+| Variable                                  | Service        | Purpose                             |
+| ----------------------------------------- | -------------- | ----------------------------------- |
+| `WEBHOOK_SECRET`                          | Webhook Auth   | Validates incoming webhook requests |
+| `MERMAID_TOKEN`                           | AI Provider    | API token for assistant operations  |
+| `MERMAID_ASSISTANT_ID`                    | AI Provider    | Default assistant identifier        |
+| `MERMAID_ACCOUNT_ID`                      | Account System | Primary account identifier          |
+| `ANTHROPIC_API_KEY`                       | Anthropic      | Claude API key for AI operations    |
+| `ANTHROPIC_ADMIN_API_KEY`                 | Anthropic      | Admin API for usage/billing data    |
+| `GOOGLE_SERVICE_ACCOUNT_CREDENTIALS_JSON` | Google         | Service account for Drive/Sheets    |
 
 ### Account-Level Configs (`lib/accounts/[name-id]/config.ts`)
 
@@ -124,6 +149,30 @@ export const config = {
 - Keep components focused on rendering
 - Use Server Components for data fetching
 - Use Server Actions or API routes for mutations
+
+### 6. Icons - Use Lucide React
+
+**CRITICAL**: Never use inline SVG for icons.
+
+#### ❌ NEVER do this:
+
+```tsx
+<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24">
+  <path ... />
+</svg>
+```
+
+#### ✅ ALWAYS do this:
+
+```tsx
+import { Lightbulb, Building2, BarChart3 } from "lucide-react";
+
+<Lightbulb className="w-6 h-6 text-blue-600" />;
+```
+
+**Why:** Inline SVGs bloat code, are hard to maintain, and reduce readability.
+
+Find icons at: https://lucide.dev/icons
 
 #### Example - Correct Page Pattern:
 
