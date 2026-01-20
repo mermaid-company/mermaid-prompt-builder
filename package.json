@@ -27,6 +27,7 @@
   "homepage": "https://github.com/mermaid-company/mermaid-prompt-builder#readme",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.71.2",
+    "@supabase/supabase-js": "^2.91.0",
     "@tailwindcss/postcss": "^4.1.18",
     "googleapis": "^170.1.0",
     "lucide-react": "^0.562.0",

@@ -508,11 +508,13 @@ Or manually create `lib/types/supabase.ts` based on schema.
 
 ### 2.4 Checklist - Phase 2
 
-- [ ] Install `@supabase/supabase-js`
-- [ ] Create `lib/services/supabase/client.ts`
-- [ ] Create `lib/services/supabase/index.ts`
-- [ ] Generate or create `lib/types/supabase.ts`
-- [ ] Test client connection
+- [x] Install `@supabase/supabase-js`
+- [x] Create `lib/services/supabase/client.ts`
+- [x] Create `lib/services/supabase/index.ts`
+- [x] Generate or create `lib/types/supabase.ts`
+- [x] Test client connection (via `node scripts/test-supabase-client.mjs`)
+
+**Completed:** 2026-01-20
 
 ---
 
