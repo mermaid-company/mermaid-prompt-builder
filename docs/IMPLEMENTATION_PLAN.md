@@ -134,37 +134,34 @@ GOOGLE_SERVICE_ACCOUNT_CREDENTIALS_JSON=  # Google Drive/Sheets access
   - `BriefingPayload` - Webhook payload wrapper
   - `BriefingSection` - Individual section of briefing
   - `WebhookHeaders` - Expected webhook headers
-  
 - [ ] Create `lib/types/assistant.types.ts`
   - `Assistant` - Claude assistant representation
   - `AssistantConfig` - Local assistant configuration
   - `AssistantVersion` - Version tracking with metadata
   - `AssistantOperation` - Create/Update/Get operations enum
-  
 - [ ] Create `lib/types/prompt.types.ts`
   - `PromptTemplate` - PRISMA-based template structure
   - `PromptVariables` - Template variable mapping
   - `GeneratedPrompt` - Output prompt with metadata
   - `InjectionFile` - Injection file structure
   - `PromptIteration` - Analysis iteration tracking
-  
 - [ ] Create `lib/types/account.types.ts`
   - `Account` - Account metadata
   - `AccountConfig` - Full account configuration
   - `AccountCredentials` - API keys (server-only)
-  
 - [ ] Create `lib/types/api.types.ts`
   - `APIResponse<T>` - Generic API response
   - `APIError` - Error class with codes
   - `WebhookValidationResult`
-  
 - [ ] Create `lib/types/cost.types.ts`
+
   - `TokenUsage` - Input/output token counts
   - `CostEntry` - Single cost log entry
   - `CostSummary` - Aggregated cost data
   - `SheetRow` - Google Sheets row structure
 
 - [ ] Create `lib/types/prisma-system.types.ts`
+
   - `PRISMAPhase` - Perception/Context/Permission phases
   - `PRISMAPattern` - Language pattern definitions
   - `PRISMAOutput` - Generated PRISMA content
@@ -289,10 +286,12 @@ GOOGLE_SERVICE_ACCOUNT_CREDENTIALS_JSON=  # Google Drive/Sheets access
 ### Checklist:
 
 - [ ] Create cost tracking utility `lib/utils/cost-tracker.ts`
+
   - `logCost(operation, usage, metadata)` - Log to Sheets
   - `calculateAnthropicCost(inputTokens, outputTokens, model)` - USD calculation
 
 - [ ] Set up Google Sheets structure in IARA-ADMIN:
+
   ```
   IARA-ADMIN/
     mermaid-prompt-builder/
@@ -387,7 +386,6 @@ export const config: AccountConfig = {
 - [ ] Create `app/api/assistants/[accountId]/route.ts`
   - GET: List assistants for account
   - POST: Create new assistant
-  
 - [ ] Create `app/api/assistants/[accountId]/[assistantId]/route.ts`
   - GET: Get assistant details
   - PUT: Update assistant
@@ -477,26 +475,27 @@ export const config: AccountConfig = {
   - Display assistant configuration
   - Show current prompt
   - Display version history
-  
 - [ ] Create `components/PromptPreview.tsx`
   - Render generated prompt
   - Syntax highlighting
   - Copy to clipboard
   - Diff view between versions
-  
 - [ ] Create `components/InjectionRunner.tsx`
+
   - Manual execution trigger
   - Status display
   - Confirmation dialog
   - Cost estimate before execution
 
 - [ ] Create `components/CostDashboard.tsx`
+
   - Total cost display
   - Cost by account/assistant
   - Time-based charts
   - Token usage breakdown
 
 - [ ] Create `components/VersionHistory.tsx`
+
   - Version timeline
   - Compare versions
   - Rollback option
@@ -549,12 +548,14 @@ export const config: AccountConfig = {
 ### Test Categories:
 
 1. **Unit Tests**
+
    - Type validation
    - PRISMA parser
    - Cost calculations
    - Version management
 
 2. **Integration Tests**
+
    - Webhook → Pipeline flow
    - Google Sheets integration
    - Anthropic API calls (with mocks)
@@ -584,20 +585,20 @@ export const config: AccountConfig = {
 
 ## Progress Tracking
 
-| Phase | Description              | Status      | Notes |
-| ----- | ------------------------ | ----------- | ----- |
-| 1     | Project Setup            | Not Started |       |
-| 2     | Type Definitions         | Not Started |       |
-| 3     | Core Services            | Not Started |       |
-| 4     | PRISMA Configuration     | Not Started |       |
-| 5     | Cost Tracking System     | Not Started |       |
-| 6     | Account Structure        | Not Started |       |
-| 7     | API Routes               | Not Started |       |
-| 8     | Prompt Pipeline          | Not Started |       |
-| 9     | UI Components            | Not Started |       |
-| 10    | Pipeline Integration     | Not Started |       |
-| 11    | Test Pipeline            | Not Started |       |
-| 12    | Documentation & Polish   | Not Started |       |
+| Phase | Description            | Status      | Notes |
+| ----- | ---------------------- | ----------- | ----- |
+| 1     | Project Setup          | Not Started |       |
+| 2     | Type Definitions       | Not Started |       |
+| 3     | Core Services          | Not Started |       |
+| 4     | PRISMA Configuration   | Not Started |       |
+| 5     | Cost Tracking System   | Not Started |       |
+| 6     | Account Structure      | Not Started |       |
+| 7     | API Routes             | Not Started |       |
+| 8     | Prompt Pipeline        | Not Started |       |
+| 9     | UI Components          | Not Started |       |
+| 10    | Pipeline Integration   | Not Started |       |
+| 11    | Test Pipeline          | Not Started |       |
+| 12    | Documentation & Polish | Not Started |       |
 
 ---
 
@@ -727,12 +728,14 @@ mermaid-prompt-builder/
 ## Claude Opus 4.5 Configuration
 
 All AI operations use:
+
 - **Model**: `claude-opus-4-5-20251101`
 - **Max Tokens**: 20000 (adjustable per operation)
 - **Temperature**: 1 (for creative prompt generation)
 - **Extended Thinking**: Enabled for analysis/improvement steps
 
 ### Cost Estimation (per 1M tokens):
+
 - Input: ~$15.00
 - Output: ~$75.00
 
