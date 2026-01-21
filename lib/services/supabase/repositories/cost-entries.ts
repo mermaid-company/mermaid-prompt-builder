@@ -19,7 +19,7 @@ const logger = createLogger("repo-cost-entries");
  * Create a new cost entry
  */
 export async function createCostEntry(
-  data: CostEntryInsert
+  data: CostEntryInsert,
 ): Promise<CostEntryRow> {
   const supabase = getSupabaseClient();
   const { data: entry, error } = await supabase
@@ -44,7 +44,7 @@ export async function createCostEntry(
  * Create multiple cost entries
  */
 export async function createCostEntries(
-  entries: CostEntryInsert[]
+  entries: CostEntryInsert[],
 ): Promise<CostEntryRow[]> {
   const supabase = getSupabaseClient();
   const { data, error } = await supabase
@@ -65,7 +65,7 @@ export async function createCostEntries(
  * Get cost entries for a pipeline run
  */
 export async function getCostEntriesByPipelineRun(
-  pipelineRunId: string
+  pipelineRunId: string,
 ): Promise<CostEntryRow[]> {
   const supabase = getSupabaseClient();
   const { data, error } = await supabase
@@ -87,7 +87,7 @@ export async function getCostEntriesByPipelineRun(
  */
 export async function getCostEntriesByAccount(
   accountId: string,
-  limit?: number
+  limit?: number,
 ): Promise<CostEntryRow[]> {
   const supabase = getSupabaseClient();
   let query = supabase
@@ -117,7 +117,7 @@ export async function getCostEntriesByAccount(
  */
 export async function getDailyCostsByAccount(
   accountId: string,
-  days: number = 30
+  days: number = 30,
 ): Promise<DailyCostByAccount[]> {
   const supabase = getSupabaseClient();
   const { data, error } = await supabase
@@ -139,7 +139,7 @@ export async function getDailyCostsByAccount(
  * Get all daily costs (global view)
  */
 export async function getAllDailyCosts(
-  days: number = 30
+  days: number = 30,
 ): Promise<DailyCostByAccount[]> {
   const supabase = getSupabaseClient();
   const { data, error } = await supabase
@@ -160,7 +160,7 @@ export async function getAllDailyCosts(
  * Get cost summary by assistant
  */
 export async function getCostsByAssistant(
-  accountId?: string
+  accountId?: string,
 ): Promise<CostByAssistant[]> {
   const supabase = getSupabaseClient();
   let query = supabase.from("v_costs_by_assistant").select();
@@ -183,7 +183,7 @@ export async function getCostsByAssistant(
  * Get total cost for an account
  */
 export async function getTotalCostByAccount(
-  accountId: string
+  accountId: string,
 ): Promise<number> {
   const supabase = getSupabaseClient();
   const { data, error } = await supabase
@@ -236,8 +236,26 @@ export async function getCostsByOperation(params: {
     totalCost: entries.reduce((sum, e) => sum + Number(e.cost_usd), 0),
     totalTokens: entries.reduce(
       (sum, e) => sum + e.input_tokens + e.output_tokens,
-      0
+      0,
     ),
     count: entries.length,
   };
+}
+
+/**
+ * Get cost summary by account (for global dashboard)
+ */
+export async function getCostSummaryByAccount(
+  days: number = 30,
+): Promise<DailyCostByAccount[]> {
+  return getAllDailyCosts(days);
+}
+
+/**
+ * Get cost summary by assistant
+ */
+export async function getCostSummaryByAssistant(
+  accountId?: string,
+): Promise<CostByAssistant[]> {
+  return getCostsByAssistant(accountId);
 }

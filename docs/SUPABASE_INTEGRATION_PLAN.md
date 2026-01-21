@@ -955,11 +955,13 @@ export async function GET(request: NextRequest) {
 
 ### 5.2 Checklist - Phase 5
 
-- [ ] Create `/api/costs` route
-- [ ] Create `/api/costs/[accountId]` route  
-- [ ] Create `/api/pipeline-runs` route
-- [ ] Create `/api/pipeline-runs/[id]` route
+- [x] Create `/api/costs` route
+- [x] Create `/api/costs/[accountId]` route  
+- [x] Create `/api/pipeline-runs` route
+- [x] Create `/api/pipeline-runs/[id]` route
 - [ ] Test all endpoints
+
+**Completed:** 2026-01-21
 
 ---
 
