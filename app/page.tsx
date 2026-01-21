@@ -43,7 +43,7 @@ export default function DashboardPage() {
             </div>
           </Card>
 
-          <Card>
+          <Card href="/costs">
             <div className="flex items-center gap-3">
               <div className="p-3 bg-purple-100 dark:bg-purple-900 rounded-lg">
                 <BarChart3 className="w-6 h-6 text-purple-600 dark:text-purple-300" />
@@ -51,9 +51,6 @@ export default function DashboardPage() {
               <div>
                 <h3 className="font-semibold">Cost Tracking</h3>
                 <p className="text-sm text-gray-500">View API usage & costs</p>
-                <Badge variant="warning" className="mt-1">
-                  Coming Soon
-                </Badge>
               </div>
             </div>
           </Card>

@@ -988,11 +988,13 @@ Update test page or create new page:
 
 ### 6.3 Checklist - Phase 6
 
-- [ ] Create cost dashboard page
-- [ ] Create pipeline history page
-- [ ] Add cost breakdown visualization (bar chart per phase)
-- [ ] Add version history component
-- [ ] Update dashboard home page with cost summary card
+- [x] Create cost dashboard page (`app/costs/page.tsx`)
+- [x] Create pipeline runs list component
+- [x] Add cost breakdown visualization (bar chart per phase)
+- [x] Add cost summary card component
+- [x] Update dashboard home page to link to cost tracking
+
+**Completed:** 2026-01-21
 
 ---
 
