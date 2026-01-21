@@ -43,6 +43,7 @@ export interface Database {
           created_at?: string;
           updated_at?: string;
         };
+        Relationships: [];
       };
       assistants: {
         Row: {
@@ -72,6 +73,14 @@ export interface Database {
           created_at?: string;
           updated_at?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: "assistants_account_id_fkey";
+            columns: ["account_id"];
+            referencedRelation: "accounts";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       pipeline_runs: {
         Row: {
@@ -125,6 +134,20 @@ export interface Database {
           total_cost_usd?: number;
           created_at?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: "pipeline_runs_account_id_fkey";
+            columns: ["account_id"];
+            referencedRelation: "accounts";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "pipeline_runs_assistant_id_fkey";
+            columns: ["assistant_id"];
+            referencedRelation: "assistants";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       pipeline_steps: {
         Row: {
@@ -166,6 +189,14 @@ export interface Database {
           metadata?: Json;
           created_at?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: "pipeline_steps_pipeline_run_id_fkey";
+            columns: ["pipeline_run_id"];
+            referencedRelation: "pipeline_runs";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       cost_entries: {
         Row: {
@@ -216,6 +247,32 @@ export interface Database {
           timestamp?: string;
           created_at?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: "cost_entries_pipeline_run_id_fkey";
+            columns: ["pipeline_run_id"];
+            referencedRelation: "pipeline_runs";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "cost_entries_pipeline_step_id_fkey";
+            columns: ["pipeline_step_id"];
+            referencedRelation: "pipeline_steps";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "cost_entries_account_id_fkey";
+            columns: ["account_id"];
+            referencedRelation: "accounts";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "cost_entries_assistant_id_fkey";
+            columns: ["assistant_id"];
+            referencedRelation: "assistants";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       prompt_versions: {
         Row: {
@@ -272,6 +329,26 @@ export interface Database {
           deployed_at?: string | null;
           created_at?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: "prompt_versions_pipeline_run_id_fkey";
+            columns: ["pipeline_run_id"];
+            referencedRelation: "pipeline_runs";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "prompt_versions_account_id_fkey";
+            columns: ["account_id"];
+            referencedRelation: "accounts";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "prompt_versions_assistant_id_fkey";
+            columns: ["assistant_id"];
+            referencedRelation: "assistants";
+            referencedColumns: ["id"];
+          },
+        ];
       };
     };
     Views: {
@@ -300,6 +377,7 @@ export interface Database {
           total_input_tokens: number;
           total_output_tokens: number;
         };
+        Relationships: [];
       };
       v_daily_costs_by_account: {
         Row: {
@@ -312,6 +390,7 @@ export interface Database {
           total_output_tokens: number;
           total_cost: number;
         };
+        Relationships: [];
       };
       v_costs_by_assistant: {
         Row: {
@@ -327,6 +406,7 @@ export interface Database {
           avg_cost_per_operation: number;
           last_activity: string | null;
         };
+        Relationships: [];
       };
     };
     Functions: {
@@ -334,6 +414,12 @@ export interface Database {
         Args: { p_assistant_id: string };
         Returns: number;
       };
+    };
+    Enums: {
+      [_ in never]: never;
+    };
+    CompositeTypes: {
+      [_ in never]: never;
     };
   };
 }
@@ -344,25 +430,40 @@ export type AccountInsert = Database["public"]["Tables"]["accounts"]["Insert"];
 export type AccountUpdate = Database["public"]["Tables"]["accounts"]["Update"];
 
 export type Assistant = Database["public"]["Tables"]["assistants"]["Row"];
-export type AssistantInsert = Database["public"]["Tables"]["assistants"]["Insert"];
-export type AssistantUpdate = Database["public"]["Tables"]["assistants"]["Update"];
+export type AssistantInsert =
+  Database["public"]["Tables"]["assistants"]["Insert"];
+export type AssistantUpdate =
+  Database["public"]["Tables"]["assistants"]["Update"];
 
 export type PipelineRun = Database["public"]["Tables"]["pipeline_runs"]["Row"];
-export type PipelineRunInsert = Database["public"]["Tables"]["pipeline_runs"]["Insert"];
-export type PipelineRunUpdate = Database["public"]["Tables"]["pipeline_runs"]["Update"];
+export type PipelineRunInsert =
+  Database["public"]["Tables"]["pipeline_runs"]["Insert"];
+export type PipelineRunUpdate =
+  Database["public"]["Tables"]["pipeline_runs"]["Update"];
 
-export type PipelineStep = Database["public"]["Tables"]["pipeline_steps"]["Row"];
-export type PipelineStepInsert = Database["public"]["Tables"]["pipeline_steps"]["Insert"];
-export type PipelineStepUpdate = Database["public"]["Tables"]["pipeline_steps"]["Update"];
+export type PipelineStep =
+  Database["public"]["Tables"]["pipeline_steps"]["Row"];
+export type PipelineStepInsert =
+  Database["public"]["Tables"]["pipeline_steps"]["Insert"];
+export type PipelineStepUpdate =
+  Database["public"]["Tables"]["pipeline_steps"]["Update"];
 
 export type CostEntryRow = Database["public"]["Tables"]["cost_entries"]["Row"];
-export type CostEntryInsert = Database["public"]["Tables"]["cost_entries"]["Insert"];
-export type CostEntryUpdate = Database["public"]["Tables"]["cost_entries"]["Update"];
+export type CostEntryInsert =
+  Database["public"]["Tables"]["cost_entries"]["Insert"];
+export type CostEntryUpdate =
+  Database["public"]["Tables"]["cost_entries"]["Update"];
 
-export type PromptVersion = Database["public"]["Tables"]["prompt_versions"]["Row"];
-export type PromptVersionInsert = Database["public"]["Tables"]["prompt_versions"]["Insert"];
-export type PromptVersionUpdate = Database["public"]["Tables"]["prompt_versions"]["Update"];
+export type PromptVersion =
+  Database["public"]["Tables"]["prompt_versions"]["Row"];
+export type PromptVersionInsert =
+  Database["public"]["Tables"]["prompt_versions"]["Insert"];
+export type PromptVersionUpdate =
+  Database["public"]["Tables"]["prompt_versions"]["Update"];
 
-export type PipelineCostBreakdown = Database["public"]["Views"]["v_pipeline_cost_breakdown"]["Row"];
-export type DailyCostByAccount = Database["public"]["Views"]["v_daily_costs_by_account"]["Row"];
-export type CostByAssistant = Database["public"]["Views"]["v_costs_by_assistant"]["Row"];
+export type PipelineCostBreakdown =
+  Database["public"]["Views"]["v_pipeline_cost_breakdown"]["Row"];
+export type DailyCostByAccount =
+  Database["public"]["Views"]["v_daily_costs_by_account"]["Row"];
+export type CostByAssistant =
+  Database["public"]["Views"]["v_costs_by_assistant"]["Row"];
