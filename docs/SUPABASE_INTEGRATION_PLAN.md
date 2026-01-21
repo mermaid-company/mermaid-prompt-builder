@@ -1036,41 +1036,43 @@ async function migrateAccounts() {
 ## Summary Checklist
 
 ### Phase 1: Database Schema
-- [ ] Create SQL migration file
-- [ ] Run migration
-- [ ] Verify tables, views, triggers
+- [x] Create SQL migration file
+- [x] Run migration
+- [x] Verify tables, views, triggers
 
 ### Phase 2: Supabase Client
-- [ ] Install dependencies
-- [ ] Create client factory
-- [ ] Generate/create TypeScript types
+- [x] Install dependencies
+- [x] Create client factory
+- [x] Generate/create TypeScript types
 
 ### Phase 3: Repository Layer
-- [ ] Accounts repository
-- [ ] Assistants repository
-- [ ] Pipeline runs repository
-- [ ] Pipeline steps repository
-- [ ] Cost entries repository
-- [ ] Prompt versions repository
+- [x] Accounts repository
+- [x] Assistants repository
+- [x] Pipeline runs repository
+- [x] Pipeline steps repository
+- [x] Cost entries repository
+- [x] Prompt versions repository
 
 ### Phase 4: Pipeline Integration
-- [ ] Update orchestrator for Supabase logging
-- [ ] Per-step tracking
-- [ ] Per-operation cost logging
-- [ ] Prompt version storage
+- [x] Update orchestrator for Supabase logging
+- [x] Per-step tracking
+- [x] Per-operation cost logging
+- [x] Prompt version storage
 
 ### Phase 5: API Routes
-- [ ] Cost summary endpoints
-- [ ] Pipeline history endpoints
+- [x] Cost summary endpoints
+- [x] Pipeline history endpoints
 
 ### Phase 6: UI
-- [ ] Cost dashboard
-- [ ] Pipeline history
-- [ ] Phase breakdown visualization
+- [x] Cost dashboard
+- [x] Pipeline history
+- [x] Phase breakdown visualization
 
 ### Phase 7: Migration
-- [ ] Migrate existing accounts
-- [ ] Update account registry
+- [x] Migrate existing accounts
+- [ ] Update account registry (optional future work)
+
+**All phases completed: 2026-01-21**
 
 ---
 
