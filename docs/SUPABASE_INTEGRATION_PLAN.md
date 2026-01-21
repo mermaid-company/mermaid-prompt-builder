@@ -1024,10 +1024,12 @@ async function migrateAccounts() {
 
 ### 7.2 Checklist - Phase 7
 
-- [ ] Create migration script
-- [ ] Run migration for existing accounts
-- [ ] Verify data in Supabase
-- [ ] Update account registry to read from Supabase (with file fallback)
+- [x] Create migration script (`scripts/migrate-accounts.mjs`)
+- [x] Run migration for existing accounts
+- [x] Verify data in Supabase (1 account, 1 assistant, 1 version migrated)
+- [ ] Update account registry to read from Supabase (with file fallback) - optional future work
+
+**Completed:** 2026-01-21
 
 ---
 
