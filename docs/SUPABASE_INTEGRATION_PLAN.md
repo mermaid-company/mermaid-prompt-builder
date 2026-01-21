@@ -829,13 +829,16 @@ export async function updateVersionStatus(
 
 ### 3.5 Checklist - Phase 3
 
-- [ ] Create `repositories/accounts.ts`
-- [ ] Create `repositories/assistants.ts`
-- [ ] Create `repositories/pipeline-runs.ts`
-- [ ] Create `repositories/pipeline-steps.ts`
-- [ ] Create `repositories/cost-entries.ts`
-- [ ] Create `repositories/prompt-versions.ts`
-- [ ] Test each repository with sample data
+- [x] Create `repositories/accounts.ts`
+- [x] Create `repositories/assistants.ts`
+- [x] Create `repositories/pipeline-runs.ts`
+- [x] Create `repositories/pipeline-steps.ts`
+- [x] Create `repositories/cost-entries.ts`
+- [x] Create `repositories/prompt-versions.ts`
+- [x] Create `repositories/index.ts` barrel export
+- [x] Test each repository with sample data
+
+**Completed:** 2026-01-21
 
 ---
 
@@ -916,13 +919,15 @@ async function logCostToSupabase(params: {
 
 ### 4.3 Checklist - Phase 4
 
-- [ ] Update pipeline orchestrator to create pipeline_run at start
-- [ ] Add pipeline step tracking with status updates
-- [ ] Modify cost tracking to save to Supabase (in addition to session tracking)
-- [ ] Create prompt_version at end of successful run
-- [ ] Update pipeline_run status on completion/failure
+- [x] Update pipeline orchestrator to create pipeline_run at start
+- [x] Add pipeline step tracking with status updates
+- [x] Modify cost tracking to save to Supabase (in addition to session tracking)
+- [x] Create prompt_version at end of successful run
+- [x] Update pipeline_run status on completion/failure
 - [ ] Test full pipeline with Supabase logging
 - [ ] Verify cost breakdown view shows correct data
+
+**Completed:** 2026-01-21
 
 ---
 
