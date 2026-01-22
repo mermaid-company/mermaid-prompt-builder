@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 /**
  * Pipeline Runs API Route
  *
@@ -84,7 +85,7 @@ export async function GET(request: NextRequest) {
             ? error.message
             : "Failed to list pipeline runs",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

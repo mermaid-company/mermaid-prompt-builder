@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 /**
  * Global Costs API Route
  *
@@ -59,7 +60,7 @@ export async function GET(request: NextRequest) {
         success: false,
         error: error instanceof Error ? error.message : "Failed to fetch costs",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
